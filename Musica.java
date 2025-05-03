@@ -1,37 +1,26 @@
-class Musica {
-    private String playlistActual;
-    private String estadoReproduccion;
+package pomodoro;
 
-    public Musica() {
-        this.playlistActual = "";
-        this.estadoReproduccion = "Detenido";
-    }
+import java.io.IOException;
 
-    public void cargarPlaylist(String link) {
-        this.playlistActual = link;
-        System.out.println("Playlist: " + link);
-    }
+public class Musica {
+    private Process proceso;
 
-    public void reproducir() {
-        this.estadoReproduccion = "Reproduciendo";
-        System.out.println("Reproduciendo");
-    }
+    public void reproducir(String url) {
+        try {
+            String chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
-    public void pausar() {
-        this.estadoReproduccion = "Pausado";
-        System.out.println("Pausaste la Música");
+            ProcessBuilder builder = new ProcessBuilder(
+                chromePath, "--new-window", "--app=" + url
+            );
+            proceso = builder.start();
+        } catch (IOException e) {
+            System.out.println("No se pudo abrir Chrome. Verifica la ruta del navegador o la URL.");
+        }
     }
 
     public void detener() {
-        this.estadoReproduccion = "Detenido";
-        System.out.println("Paraste la Música");
-    }
-    
-    public String getPlaylistActual() {
-        return playlistActual;
-    }
-    
-    public String getEstadoReproduccion() {
-        return estadoReproduccion;
+        if (proceso != null && proceso.isAlive()) {
+            proceso.destroy();
+        }
     }
 }
