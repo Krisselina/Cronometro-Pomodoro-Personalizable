@@ -1,16 +1,13 @@
-package pomodoro;
+import controlador.PomodoroController;
+import vista.PomodoroView;
 
+// Clase principal de la aplicación Pomodoro
 public class Main {
     public static void main(String[] args) {
-        Usuario usuario = new Usuario();
-        usuario.configurar();
-
-        Temporizador temporizador = new Temporizador(usuario);
-
-        // NOTA: aquí debes ajustar el navegador que usas
-        Musica musica = new Musica(); // o "google-chrome", o ruta absoluta
-        Interfaz interfaz = new Interfaz(temporizador, musica, usuario);
-
-        interfaz.iniciar();
+        // Ejecuta la creación de la interfaz gráfica en el hilo de eventos de Swing
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            PomodoroView vista = new PomodoroView(); // Crea la vista (interfaz gráfica)
+            new PomodoroController(vista); // Crea el controlador y lo conecta con la vista
+        });
     }
 }
