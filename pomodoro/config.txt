@@ -1,0 +1,6 @@
+#Configuración del usuario - Pomodoro
+#Fri May 02 12:40:07 COT 2025
+playlistDescanso=https\://music.youtube.com/playlist?list\=RDTMAK5uy_nilrsVWxrKskY0ZUpVZ3zpB0u4LwWTVJ4
+descanso=1
+playlistTrabajo=https\://music.youtube.com/playlist?list\=RDTMAK5uy_nilrsVWxrKskY0ZUpVZ3zpB0u4LwWTVJ4
+trabajo=1
